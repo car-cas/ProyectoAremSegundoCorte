@@ -1,1 +1,1 @@
-"#ProyectoAremSegundoCorte" 
+"ProyectoAremSegundoCorte" 
