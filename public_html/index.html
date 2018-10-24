@@ -22,6 +22,18 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/apigClient.js"></script>
+        <script type="text/javascript" src="js/apiGateway-js-sdk/operaciones.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -54,7 +66,7 @@
                 <p>Tasa de cambio para la consulta y búsqueda en la conversión de moneda</p>
                 <p><input type="text" placeholder="Moneda" class="form-control"></p>
                 <select name="despleigue">
-                     
+
                     <option value="1">Dolar</option> 
                     <option value="2">Pesos(COL)</option> 
                     <option value="3">Bolivar</option>
@@ -62,7 +74,7 @@
                     <option value="11">Euro</option> 
                     <option value="12">Libras</option> 
                 </select>
-                <button type="submit" class="btn btn-success">Cambiar</button>
+                <button type="submit" onclick="getResponse()" class="btn btn-success"  >Cambiar</button>
                 <p></p>
                 <input type="text" placeholder="Cambio" class="form-control">
             </div>
