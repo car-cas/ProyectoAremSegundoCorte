@@ -97,10 +97,10 @@
                 <p></p>
                 <p>3. Ingrese la cantidad a convertir</p>
                 <p></p>
-                <p><input type="text" id="moneda" placeholder="moneda" class="form-control"  style="width:400px" onchange="getVarsUrl()"></p>
+                <p><input type="text" id="moneda" placeholder="moneda" class="form-control"  style="width:400px" onchange="requestUrl()"></p>
 
                 <p></p>
-                
+
                 <p>4. Valor convertido</p>
                 <p></p>
                 <!--<button type="submit" onclick="getResponse()" class="btn btn-success"  >Cambiar</button>-->
@@ -126,10 +126,24 @@
 
                 </select>
 
-                <p></p>
 
-                <button type="submit" onclick="getResponse()" class="btn btn-success"  >cambiar</button>
+                <button type="submit" onchange="getResponse()" class="btn btn-success"  >Consultar</button>
+                <p></p>
+                <TABLE BORDER CELLPADDING=10 CELLSPACING=0>
+                    <TR><TD>JPY(Yen)</TD>              <TD>B</TD></TR>
+                    <TR><TD>USD(Dolar)</TD>            <TD>B</TD></TR>
+                    <TR><TD>COP(Peso Colombiano)</TD>  <TD>B</TD></TR>
+                    <TR><TD>EUR(Euro)</TD>             <TD>B</TD></TR>
+                    <TR><TD>BRL(Real Brasileno)</TD>   <TD>B</TD></TR>
+                    <TR><TD>CAD(Dolar Canadiense)</TD> <TD>B</TD></TR>
+                    <TR><TD>AUD(Dolar Australiano)</TD><TD>B</TD></TR>
+                    <TR><TD>CHF(Franco Suizo</TD>      <TD>B</TD></TR>
+                    <TR><TD>GBP(Libra Britanica)</TD>  <TD>B</TD></TR>
+                    
+                    
+                </TABLE>
                 
+
             </div>
 
         </div>

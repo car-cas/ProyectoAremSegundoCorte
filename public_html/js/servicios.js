@@ -3,12 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-function getVarsUrl()
+function requestUrl()
 {
-    var numero = document.getElementById("moneda");
-    var moneda1 = document.getElementById("despliegue");
-    var moneda2 = document.getElementById("despliegue2");
-    url = "https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=" + moneda1.value + "&to_symbol=" + moneda2.value + "&interval=5min&apikey=Q8EQ7DDSA3ZMYPYM";
+    var moneda = document.getElementById("moneda");
+    var tipo1 = document.getElementById("despliegue");
+    var tipo2 = document.getElementById("despliegue2");
+    url = "https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=" 
+         + tipo1.value + "&to_symbol=" + tipo2.value + "&interval=5min&apikey=Q8EQ7DDSA3ZMYPYM";
     var arrUrl = url.split("&");
     var urlObj = {};
     var xmlHttp = new XMLHttpRequest();
@@ -21,8 +22,13 @@ function getVarsUrl()
     value = value.split(":");
     value = value[1];
 
-    var bal = value.substr(2, value.length - 3);
-    bal = parseFloat(bal * (parseInt(numero.value)));
-    document.getElementById("cambio").value = bal;
+    var respuesta = value.substr(2, value.length - 3);
+    respuesta = parseFloat(respuesta * (parseInt(moneda.value)));
+    document.getElementById("cambio").value = respuesta;
     return value;
 }
+
+function getResponse(){
+ 
+}
+
