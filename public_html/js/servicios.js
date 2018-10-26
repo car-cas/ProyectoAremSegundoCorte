@@ -30,6 +30,7 @@ function requestUrl()
 }
 
 function getResponse() {
+    var t = document.getElementById("tabla");
     
     var moneda = document.getElementById("despleigue3").value;
     
@@ -58,7 +59,7 @@ function getResponse() {
     }
     
     tabla.appendChild(tblBody);
-    body.appendChild(tabla);
+    t.appendChild(tabla);
     tabla.setAttribute("border", "2");
 }
 
