@@ -33,12 +33,12 @@ function getResponse() {
     
     var moneda = document.getElementById("despleigue3").value;
     
-    var monedas =  ["JPY", "USD", "COP", "EUR", "BRL", "CAD"];
+    var monedas =  ["JPY", "USD", "COP", "EUR", "BRL", "CAD", "AUD", "CHF", "GBP"];
     
     var body = document.getElementsByTagName("body")[0];
     var tabla = document.createElement("table");
     var tblBody = document.createElement("tbody");
-    for (var i = 0; i < monedas.length - 1; i++) {
+    for (var i = 0; i < monedas.length - 3; i++) {
         
         var fila = document.createElement("tr");
         for (var j = 0; j < 2; j++) {
