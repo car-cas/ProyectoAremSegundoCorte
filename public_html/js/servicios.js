@@ -24,6 +24,7 @@ function requestUrl()
 
     var respuesta = value.substr(2, value.length - 3);
     respuesta = parseFloat(respuesta * (parseInt(moneda.value)));
+    
     document.getElementById("cambio").value = respuesta;
     return value;
 }
@@ -32,7 +33,7 @@ function getResponse() {
     
     var moneda = document.getElementById("despleigue3").value;
     
-    var monedas =  ["JPY", "USD", "COP", "EUR", "BRL", "CAD", "AUD", "CHF", "GBP"];
+    var monedas =  ["JPY", "USD", "COP", "EUR", "BRL", "CAD"];
     
     var body = document.getElementsByTagName("body")[0];
     var tabla = document.createElement("table");
@@ -47,7 +48,7 @@ function getResponse() {
                 if (j == 0) {
                     celda = document.createTextNode(monedas[i]);
                 } else {
-                    celda = document.createTextNode(read(monedas[i], moneda));
+                    celda = document.createTextNode(requestMoneda(monedas[i], moneda));
                 }
                 columna.appendChild(celda);
                 fila.appendChild(columna);
@@ -61,7 +62,7 @@ function getResponse() {
     tabla.setAttribute("border", "2");
 }
 
-function read(moneda1, moneda2) {
+function requestMoneda(moneda1, moneda2) {
     
     var url = "https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=" + moneda1 + "&to_symbol=" + moneda2+"&interval=5min&apikey=Q8EQ7DDSA3ZMYPYM";
     var xmlHttp = new XMLHttpRequest();
