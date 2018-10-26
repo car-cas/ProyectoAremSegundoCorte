@@ -35,7 +35,7 @@
         <script type="text/javascript" src="js/apiGateway-js-sdk/apigClient.js"></script>
         <script type="text/javascript" src="js/apiGateway-js-sdk/operaciones.js"></script>
     </head>
-    <body onkeydown="myFunction()">
+    <body onload="getList()">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -78,14 +78,9 @@
 
                 </select>
                 <p></p>
-                <p>2. Ingrese la cantidad a convertir</p>
+                <p>2. Seleccione la moneda a la cual desea convertir la cantidad ingresada.</p>
                 <p></p>
-                <p><input type="text" id="moneda" placeholder="moneda" class="form-control"  style="width:400px" onchange="getVarsUrl()"></p>
-
-                <p></p>
-                <p>3. Seleccione la moneda a la cual desea convertir la cantidad ingresada.</p>
-                <p></p>
-                <select id="despliegue2">
+                <select id="despliegue2" >
 
                     <option value="JPY">JPY(Yen)</option> 
                     <option value="USD">USD(Dolar)</option> 
@@ -100,11 +95,17 @@
                 </select>
 
                 <p></p>
+                <p>3. Ingrese la cantidad a convertir</p>
+                <p></p>
+                <p><input type="text" id="moneda" placeholder="moneda" class="form-control"  style="width:400px" onchange="getVarsUrl()"></p>
+
+                <p></p>
+                
                 <p>4. Valor convertido</p>
                 <p></p>
                 <!--<button type="submit" onclick="getResponse()" class="btn btn-success"  >Cambiar</button>-->
                 <!--<input type="text" id="cambio" placeholder="cambio" class="form-control" style="width:400px">-->
-                <textarea id="cambio" rows="1"> </textarea>
+                <textarea id="cambio" rows="1" name="something" disabled > </textarea>
                 <p></p> 
 
             </div>
@@ -128,6 +129,7 @@
                 <p></p>
 
                 <button type="submit" onclick="getResponse()" class="btn btn-success"  >cambiar</button>
+                
                 <script>
                     function getVarsUrl()
                     {
@@ -149,7 +151,7 @@
 
                         var bal = value.substr(2, value.length - 3);
                         bal = parseFloat(bal * (parseInt(numero.value)));
-                        alert(bal);
+                        document.getElementById("cambio").value = bal; 
                         return value;
                     }
                 </script>
