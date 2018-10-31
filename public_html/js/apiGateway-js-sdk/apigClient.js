@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://2o3ajsunt7.execute-api.us-east-2.amazonaws.com/prod';
+    var invokeUrl = 'https://d8yq6vhq43.execute-api.us-east-2.amazonaws.com/prod';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -83,57 +83,39 @@ apigClientFactory.newClient = function (config) {
     
     
     
-    apigClient.rootGet = function (params, body, additionalParams) {
+    apigClient.mysecondresourceGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var rootGetRequest = {
+        var mysecondresourceGetRequest = {
             verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/mysecondresource').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(rootGetRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(mysecondresourceGetRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.rootPost = function (params, body, additionalParams) {
+    apigClient.mysecondresourceOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var rootPostRequest = {
-            verb: 'post'.toUpperCase(),
-            path: pathComponent + uritemplate('/').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(rootPostRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.rootOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var rootOptionsRequest = {
+        var mysecondresourceOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/mysecondresource').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(rootOptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(mysecondresourceOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
 
