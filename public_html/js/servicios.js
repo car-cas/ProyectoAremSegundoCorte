@@ -8,16 +8,23 @@ function requestUrl()
     var moneda = document.getElementById("moneda");
     var tipo1 = document.getElementById("despliegue");
     var tipo2 = document.getElementById("despliegue2");
-    url = "https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol="
-            + tipo1.value + "&to_symbol=" + tipo2.value + "&interval=5min&apikey=Q8EQ7DDSA3ZMYPYM";
+    url = "https://d8yq6vhq43.execute-api.us-east-2.amazonaws.com/prod/mysecondresource";
     var arrUrl = url.split("&");
     var urlObj = {};
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", url, false); // false for synchronous request
     xmlHttp.send(null);
-
+    
     var lista = xmlHttp.responseText;
-    lista = lista.split("\n");
+    lista = JSON.parse(lista)['rates'];
+    
+    var i=0;
+    for(var k in lista){
+        tipo1.options[i] = new Option(k);
+        tipo2.options[i] = new Option(k);
+        i=+1
+    }
+    /*
     var value = lista[15];
     value = value.split(":");
     value = value[1];
@@ -27,6 +34,8 @@ function requestUrl()
     
     document.getElementById("cambio").value = respuesta;
     return value;
+    */
+   return lista;
 }
 
 function getResponse() {
@@ -34,7 +43,7 @@ function getResponse() {
     
     var moneda = document.getElementById("despleigue3").value;
     
-    var monedas =  ["JPY", "USD", "COP", "EUR", "BRL", "CAD", "AUD", "CHF", "GBP"];
+    var monedas = getList();
     
     var body = document.getElementsByTagName("body")[0];
     var tabla = document.createElement("table");
@@ -65,7 +74,7 @@ function getResponse() {
 
 function requestMoneda(moneda1, moneda2) {
     
-    var url = "https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=" + moneda1 + "&to_symbol=" + moneda2+"&interval=5min&apikey=Q8EQ7DDSA3ZMYPYM";
+    var url = "https://d8yq6vhq43.execute-api.us-east-2.amazonaws.com/prod/mysecondresource";
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", url, false); // false for synchronous request
     xmlHttp.send(null);

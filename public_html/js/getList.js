@@ -5,7 +5,6 @@
  */
 function getList()
 {
-    getapi();
     var menu = document.getElementById("moneda1");
     var menu2 = document.getElementById("moneda2");
     var menu3 = document.getElementById("moneda3");
@@ -43,5 +42,7 @@ function getvalues()
         lista[i] = temp;
     }
     return lista;
-}
-
+}   
+ 
+  
+   
