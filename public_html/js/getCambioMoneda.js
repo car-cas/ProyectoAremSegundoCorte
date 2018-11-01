@@ -23,11 +23,11 @@ function getCambioMoneda()
             tasa2 = parseFloat(lista[x]);
         }
     }
-    var calculo;
+    var bal;
     if (flag) {
-        calculo = tasa2 * numero.value;
+        bal = tasa2 * numero.value;
     } else {
-        calculo = ((1 / tasa1) * tasa2) * numero.value;
+        bal = ((1 / tasa1) * tasa2) * numero.value;
     }
     document.getElementById("cambio").value = bal;
 }
