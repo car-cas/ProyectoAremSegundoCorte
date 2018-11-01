@@ -21,15 +21,13 @@
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/main.css">
 
-      
-        <script type="text/javascript" src="js/servicios.js"></script>
-        <script type="text/javascript" src="js/getVar.js"></script>
+        <script type="text/javascript" src="js/getCambioMoneda.js"></script>
+        <script type="text/javascript" src="js/getList.js"></script>
+        
         
     </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+    <body onload="getList()">
+        
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -48,47 +46,28 @@
                 </div><!--/.navbar-collapse -->
             </div>
         </nav>
-
-        <!-- Main jumbotron for a primary marketing message or call to action -->
-        <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
         <div class="jumbotron">
             <div id = "request" class="container">
                 <h1>Consultar Moneda</h1>
                 <p>1. Seleccione la moneda que representa la cantida a convertir</p>
-                <select id="despliegue" >
+                <select class="custom-select mr-sm-2" id="despliegue" >
 
-                    <option value="JPY">JPY(Yen)</option> 
-                    <option value="USD">USD(Dolar)</option> 
-                    <option value="COP">COP(Peso Colombiano)</option>
-                    <option value="EUR">EUR(Euro)</option> 
-                    <option value="BRL">BRL(Real Brasileno)</option> 
-                    <option value="CAD">CAD(Dolar Canadiense)</option>
-                    <option value="AUD">AUD(Dolar Australiano)</option> 
-                    <option value="CHF">CHF(Franco Suizo)</option>
-                    <option value="GBP">GBP(Libra Britanica)</option> 
+                    <option></option> 
 
                 </select>
                 <p></p>
                 <p>2. Seleccione la moneda a la cual desea convertir la cantidad ingresada.</p>
                 <p></p>
-                <select id="despliegue2" >
+                <select class="custom-select mr-sm-2" id="despliegue2" >
 
-                    <option value="JPY">JPY(Yen)</option> 
-                    <option value="USD">USD(Dolar)</option> 
-                    <option value="COP">COP(Peso Colombiano)</option>
-                    <option value="EUR">EUR(Euro)</option> 
-                    <option value="BRL">BRL(Real Brasileno)</option> 
-                    <option value="CAD">CAD(Dolar Canadiense)</option>
-                    <option value="AUD">AUD(Dolar Australiano)</option> 
-                    <option value="CHF">CHF(Franco Suizo)</option>
-                    <option value="GBP">GBP(Libra Britanica)</option>
+                    <option></option>
 
                 </select>
 
                 <p></p>
                 <p>3. Ingrese la cantidad a convertir</p>
                 <p></p>
-                <p><input type="text" name="moneda" id="moneda" placeholder="moneda" class="form-control"  style="width:400px" onchange="getVar()"></p>
+                <p><input type="text" name="moneda" id="moneda" placeholder="moneda" class="form-control"  style="width:400px" onchange="getCambioMoneda()"></p>
 
                 <p></p>
 
@@ -103,39 +82,16 @@
             <div id = "request2" class="container">
                 <h1>Lista de Moneda</h1>
                 <p>1. Seleccione la moneda que representa la cantida a convertir</p>
-                <select id="despleigue3">
+                <select class="custom-select mr-sm-2" id="despliegue3">
 
-                    <option value="JPY">JPY(Yen)</option> 
-                    <option value="USD">USD(Dolar)</option> 
-                    <option value="COP">COP(Peso Colombiano)</option>
-                    <option value="EUR">EUR(Euro)</option> 
-                    <option value="BRL">BRL(Real Brasileno)</option> 
-                    <option value="CAD">CAD(Dolar Canadiense)</option>
-                    <option value="AUD">AUD(Dolar Australiano)</option> 
-                    <option value="CHF">CHF(Franco Suizo)</option>
-                    <option value="GBP">GBP(Libra Britanica)</option>
+                    <option></option>
 
                 </select>
 
 
                 <button type="submit" onclick="getResponse()" class="btn btn-success"  >Consultar</button>
                 <p></p>
-                <div id="tabla"></div>
-                <!--<TABLE BORDER CELLPADDING=10 CELLSPACING=0>
-                    <TR><TD>JPY(Yen)</TD>              <TD>B</TD></TR>
-                    <TR><TD>USD(Dolar)</TD>            <TD>B</TD></TR>
-                    <TR><TD>COP(Peso Colombiano)</TD>  <TD>B</TD></TR>
-                    <TR><TD>EUR(Euro)</TD>             <TD>B</TD></TR>
-                    <TR><TD>BRL(Real Brasileno)</TD>   <TD>B</TD></TR>
-                    <TR><TD>CAD(Dolar Canadiense)</TD> <TD>B</TD></TR>
-                    <TR><TD>AUD(Dolar Australiano)</TD><TD>B</TD></TR>
-                    <TR><TD>CHF(Franco Suizo</TD>      <TD>B</TD></TR>
-                    <TR><TD>GBP(Libra Britanica)</TD>  <TD>B</TD></TR>
-                    
-                    
-                </TABLE>-->
-                
-                    
+                <div id="tabla"></div>                    
             </div>
 
         </div>

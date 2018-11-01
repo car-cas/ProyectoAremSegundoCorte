@@ -5,44 +5,35 @@
  */
 function getList()
 {
-    var menu = document.getElementById("moneda1");
-    var menu2 = document.getElementById("moneda2");
-    var menu3 = document.getElementById("moneda3");
-    var url = "https://openexchangerates.org/api/latest.json?app_id=5a2f8324b0c64f47b759a8686685b9c1"
+    var url = "https://d8yq6vhq43.execute-api.us-east-2.amazonaws.com/prod/mysecondresource"
+
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", url, false); // false for synchronous request
     xmlHttp.send(null);
     var lista = xmlHttp.responseText;
-    lista = lista.split("\n");
-    lista = lista.slice(6, lista.length - 2);
-    var i;
-    for (i = 0; i < lista.length; i++) {
-        var temp = lista[i].split(":");
-        menu.options[i] = new Option(temp[0]);
-        menu2.options[i] = new Option(temp[0]);
-        menu3.options[i] = new Option(temp[0]);
+    lista = JSON.parse(lista)['rates'];
+    var i = 0;
+    var despliegue = document.getElementById("despliegue");
+    var despliegue2 = document.getElementById("despliegue2");
+    var despliegue3 = document.getElementById("despliegue3");
+    for (var k in lista) {
+        despliegue.options[i] = new Option(k);
+        despliegue2.options[i] = new Option(k);
+        despliegue3.options[i] = new Option(k);
+        i += 1;
     }
     return lista;
 }
 function getvalues()
 {
-    var menu = document.getElementById("moneda1");
-    var menu2 = document.getElementById("moneda2");
-    var menu3 = document.getElementById("moneda3");
-    var url = "https://openexchangerates.org/api/latest.json?app_id=5a2f8324b0c64f47b759a8686685b9c1"
+    var url = "https://openexchangerates.org/api/latest.json?app_id=ca6894a1412844969a63ed52558ef68d"
     var xmlHttp = new XMLHttpRequest();
     xmlHttp.open("GET", url, false); // false for synchronous request
     xmlHttp.send(null);
     var lista = xmlHttp.responseText;
-    lista = lista.split("\n");
-    lista = lista.slice(6, lista.length - 2);
-    var i;
-    for (i = 0; i < lista.length; i++) {
-        var temp = lista[i].split(":");
-        lista[i] = temp;
-    }
+    lista = JSON.parse(lista)['rates'];
     return lista;
-}   
- 
-  
-   
+}
+
+
+
