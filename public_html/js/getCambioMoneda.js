@@ -7,8 +7,7 @@
 function getCambioMoneda()
 {
     var lista = getvalues();
-    var tasa1;
-    var tasa2;
+    var tasa1,tasa2;
     var numero = document.getElementById("moneda");
     var despliegue = document.getElementById("despliegue");
     var despliegue2 = document.getElementById("despliegue2");
@@ -24,69 +23,95 @@ function getCambioMoneda()
             tasa2 = parseFloat(lista[x]);
         }
     }
-    var bal;
+    var calculo;
     if (flag) {
-        bal = tasa2 * numero.value;
+        calculo = tasa2 * numero.value;
     } else {
-        var temp=(1/tasa1)*tasa2;
-        bal = temp*numero.value;
+        calculo = ((1 / tasa1) * tasa2) * numero.value;
     }
     document.getElementById("cambio").value = bal;
 }
 
 function getResponse() {
-    var despliegue3 = document.getElementById("despliegue3").value;
-    var lista = getList();
-    var body = document.getElementsByTagName("body")[0];
-    var tabla = document.createElement("table");
-    var tblBody = document.createElement("tbody");
-    for (var i = 0; i < lista.length - 1; i++) {
-        var fila = document.createElement("tr");
-        for (var j = 0; j < 2; j++) {
-            if (lista[i] != despliegue3) {
-                var columna = document.createElement("td");
-                var celda;
-                var lectura = read(lista[i], despliegue3);
-                try {
-                    if (j == 0) {
-                        celda = document.createTextNode(despliegue3[i]);
-                    } else {
-                        celda = document.createTextNode(lectura);
-                    }
-                } catch (e) {
 
-                    if (e instanceof TypeError) {
+    var despliegue = document.getElementById("despliegue3").value;
+    if (!exists(despliegue)) {
+        var lista = getList();
+        var tabla = document.getElementById("tabla");
+        var tblBody = document.createElement("tbody");
+        for (var k in lista) {
+            var fila = document.createElement("tr");
+            for (var j = 0; j < 2; j++) {
+                if (k !== despliegue) {
+                    var columna = document.createElement("td");
+                    var celda;
+                    try {
+                        if (j == 0) {
+                            celda = document.createTextNode(k);
+                        } else {
+                            celda = document.createTextNode(read(k, despliegue, lista));
+                        }
+                    } catch (e) {
 
+                        if (e instanceof TypeError) {
+
+                        }
                     }
+
+                    columna.appendChild(celda);
+                    fila.appendChild(columna);
                 }
-
-                columna.appendChild(celda);
-                fila.appendChild(columna);
             }
+            tblBody.appendChild(fila);
         }
-        tblBody.appendChild(fila);
+        tabla.appendChild(tblBody);
     }
-    tabla.appendChild(tblBody);
-    body.appendChild(tabla);
-    tabla.setAttribute("border", "2");
 }
-function read(moneda1, moneda2) {
-    var url = "https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=" + moneda1 + "&to_symbol=" + moneda2 + "&interval=5min&apikey=Y47LUWHBZVHYZWEG";
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", url, false); // false for synchronous request
-    xmlHttp.send(null);
-    var lista = xmlHttp.responseText;
-    lista = lista.split("\n");
-    if (lista[1].startsWith('    "Information"')) {
-        var exe = new TypeError('Hello', "someFile.js", 10);
-        alert("entro");
-        throw exe;
-    } else {
-        var value = lista[15];
-        value = value.split(":");
-        value = value[1];
-        var bal = value.substr(2, value.length - 3);
-        bal = parseFloat(bal);
-        return bal;
+function exists(despliegue) {
+    var temp = document.getElementById("tabla");
+    if (temp.getElementsByTagName("tbody").length !== 0) {
+        var lista = getList();
+        var tblBody = document.createElement("tbody");
+        for (var moneda in despliegue) {
+            var fila = document.createElement("tr");
+            for (var j = 0; j < 2; j++) {
+                if (k !== despliegue) {
+                    var columna = document.createElement("td");
+                    var celda;
+                    try {
+                        if (j == 0) {
+                            celda = document.createTextNode(moneda);
+                        } else {
+                            celda = document.createTextNode(read(moneda, despliegue, lista));
+                        }
+                    } catch (e) {
+
+                    }
+
+                    columna.appendChild(celda);
+                    fila.appendChild(columna);
+                }
+            }
+            tblBody.appendChild(fila);
+
+
+        }
+        var tabla = document.getElementById("tabla");
+        var body = tabla.getElementsByTagName("tbody")[0];
+        body.parentNode.replaceChild(tblBody, body);
     }
+    return (temp.getElementsByTagName("tbody").length !== 0);
+}
+
+
+function read(moneda, moneda2, lista) {
+    var res;
+    if (moneda.value === '"USD"') {
+        res = parseFloat(lista[moneda2]);
+    } else {
+        var cal;
+        cal = 1 / parseFloat(lista[moneda]);
+        res = cal * parseFloat(lista[moneda2]);
+    }
+    return res;
 }

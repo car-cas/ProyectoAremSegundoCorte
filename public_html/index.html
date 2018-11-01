@@ -23,11 +23,11 @@
 
         <script type="text/javascript" src="js/getCambioMoneda.js"></script>
         <script type="text/javascript" src="js/getList.js"></script>
-        
-        
+
+
     </head>
     <body onload="getList()">
-        
+
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -73,9 +73,7 @@
 
                 <p>4. Valor convertidos</p>
                 <p></p>
-                <!--<button type="submit" onclick="getResponse()" class="btn btn-success"  >Cambiar</button>-->
-                <!--<input type="text" id="cambio" placeholder="cambio" class="form-control" style="width:400px">-->
-                <textarea id="cambio" rows="1" name="something" disabled > </textarea>
+                <input id="cambio" rows="1" name="something" disabled style="width:400px" >
                 <p></p> 
 
             </div>
@@ -91,7 +89,12 @@
 
                 <button type="submit" onclick="getResponse()" class="btn btn-success"  >Consultar</button>
                 <p></p>
-                <div id="tabla"></div>                    
+                <table class="egt" id="tabla" width="40%" >
+                    <thead>
+                    <th>Tipo Moneda</th>
+                    <th>Cambio</th>
+                    </thead>
+                </table>                  
             </div>
 
         </div>
